@@ -36,4 +36,45 @@ class NestonTripleATest {
             }
         }
     }
+
+    @Test
+    fun  quando_activity_abrir_botao_deve_estar_desabilitado() {
+        withMainActivity {
+            arrange {
+                mockQualquerCoisa()
+            }
+            act {
+                launch()
+            }
+            assert {
+                checkButtonIsDisabled()
+            }
+        }
+    }
+
+    @Test
+    fun  quando_digitar_MENOS_de_4_caracteres_botao_deve_permanener_desabilitado() {
+        withMainActivity {
+            act {
+                launch()
+                typeInvalidText()
+            }
+            assert {
+                checkButtonIsDisabled()
+            }
+        }
+    }
+
+    @Test
+    fun  quando_digitar_MAIS_de_4_caracteres_botao_deve_ficar_habilitado() {
+        withMainActivity {
+            act {
+                launch()
+                typeValidText()
+            }
+            assert {
+                checkButtonIsEnable()
+            }
+        }
+    }
 }

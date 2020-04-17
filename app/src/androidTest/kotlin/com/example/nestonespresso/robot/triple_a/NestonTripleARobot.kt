@@ -4,6 +4,9 @@ import androidx.test.core.app.ActivityScenario
 import com.example.nestonespresso.MainActivity
 import com.example.nestonespresso.R
 import com.example.test.extension.hasText
+import com.example.test.extension.isDisable
+import com.example.test.extension.isEnabled
+import com.example.test.extension.typeText
 
 fun withMainActivity(func: NestonTripleARobot.() -> Unit) = NestonTripleARobot().apply(func)
 
@@ -31,10 +34,18 @@ class NestonArrangeRobot() {
 
 class NestonActRobot() {
     fun launch() = ActivityScenario.launch(MainActivity::class.java)
+
+    fun typeInvalidText() = R.id.edit_name.typeText("ABC")
+
+    fun typeValidText() = R.id.edit_name.typeText("ABCD")
 }
 
 class NestonAssertRobot() {
     fun checkEmptyEditText() = R.id.edit_name.hasText("")
 
     fun checkImportantText() = R.id.text_sample.hasText("Texto super importante para a feature")
+
+    fun checkButtonIsDisabled() = R.id.button_click_me.isDisable()
+
+    fun checkButtonIsEnable() = R.id.button_click_me.isEnabled()
 }
