@@ -1,0 +1,3 @@
+rootProject.name='Neston Espresso'
+include ':app'
+include ':test'
