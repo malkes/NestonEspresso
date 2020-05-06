@@ -63,5 +63,14 @@ class NestonOtherWay2Test {
                 checkButtonIsEnable()
             }
         }
+
+        //Outra forma de fazer
+        withMainActivity {
+            mockQualquerCoisa()
+        } launchActivity {
+            typeValidText()
+        }verify {
+            checkButtonIsEnable()
+        }
     }
 }
